@@ -1,4 +1,8 @@
 import streamlit as st
+
+# THIS MUST BE THE VERY FIRST STREAMLIT COMMAND — before any other st.* call
+st.set_page_config(page_title="Next Word Prediction", layout="centered")
+
 import pickle
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -36,8 +40,6 @@ def predict_next_word(text):
 # ------------------------------
 # Streamlit UI
 # ------------------------------
-st.set_page_config(page_title="Next Word Prediction", layout="centered")
-
 st.title("🧠 Next Word Prediction (LSTM)")
 st.write("Enter a sentence and the model will predict the **next word**.")
 
@@ -50,8 +52,5 @@ if st.button("Predict Next Word"):
         next_word = predict_next_word(user_input)
         st.success(f"**Predicted Next Word:** {next_word}")
 
-# ------------------------------
-# Footer
-# ------------------------------
 st.markdown("---")
 st.caption("LSTM-based Next Word Prediction using Streamlit")
